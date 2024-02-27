@@ -46,11 +46,11 @@
           2: { cellWidth: thirdColumnWidth, align: "right" } // Prevent text wrapping in the price column
         }
       })
-      //doc.save("order.pdf")
+      doc.save("order.pdf")
 
       // Display the pdf with autoprint
-    doc.autoPrint({ variant: "non-conform" })
-    window.open(doc.output("bloburl"), "_blank")
+    // doc.autoPrint({ variant: "non-conform" })
+    // window.open(doc.output("bloburl"), "_blank")
 
 
     }
