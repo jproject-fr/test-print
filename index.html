@@ -10,7 +10,25 @@
 <h2>Printing test with existing PDF - server side</h2>
 <p><a class="button" href="#" onclick="generatePDF()">Print</a>
 
+
+<h2>Print iframe on iPad</h2>
+
+<button onclick="printIframe()">Print iframe</button>
+
+<iframe id="myIframe" src="test.pdf" style="display:none;"></iframe>
+
+
   <script>
+    function printIframe() {
+      var iframe = document.getElementById('myIframe');
+      if (iframe) {
+        iframe.contentWindow.print();
+      } else {
+        alert("Iframe not found.");
+      }
+    }
+
+
     window.jsPDF = window.jspdf.jsPDF
 
     function generatePDF() {
