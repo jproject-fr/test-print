@@ -53,6 +53,7 @@
     // window.open(doc.output("bloburl"), "_blank")
 
       // Save the PDF
+      doc.autoPrint({ variant: "non-conform" })
       const pdfBlob = doc.output('blob');
       const pdfUrl = URL.createObjectURL(pdfBlob);
 
