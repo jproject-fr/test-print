@@ -7,7 +7,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.16/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
-<h2>Printing test with hidden iframe</h2>
+<h2>Printing test with existing PDF - server side</h2>
 <p><a class="button" href="#" onclick="generatePDF()">Print</a>
 
   <script>
@@ -52,13 +52,19 @@
     // doc.autoPrint({ variant: "non-conform" })
     // window.open(doc.output("bloburl"), "_blank")
 
-      // Save the PDF
-      doc.autoPrint({ variant: "non-conform" })
-      const pdfBlob = doc.output('blob');
-      const pdfUrl = URL.createObjectURL(pdfBlob);
+      // // Save the PDF
+      // doc.autoPrint({ variant: "non-conform" })
+      // const pdfBlob = doc.output('blob');
+      // const pdfUrl = URL.createObjectURL(pdfBlob);
+      //
+      // // Open the PDF in a new tab
+      // window.open(pdfUrl, '_blank');
 
-      // Open the PDF in a new tab
-      window.open(pdfUrl, '_blank');
+      // URL to the existing PDF file
+      const existingPdfUrl = 'test.pdf';
+
+      // Open the existing PDF in a new tab
+      window.open(existingPdfUrl, '_blank');
 
     }
   </script>
