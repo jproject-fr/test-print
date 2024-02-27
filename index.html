@@ -7,7 +7,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.16/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
-<h2>Printing test with bloburl</h2>
+<h2>Printing test with hidden iframe</h2>
 <p><a class="button" href="#" onclick="generatePDF()">Print</a>
 
   <script>
@@ -47,6 +47,25 @@
         }
       })
       doc.save("order.pdf")
+
+      // Display the saved PDF in a hidden iframe
+      var iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = 'order.pdf';
+      document.body.appendChild(iframe);
+
+      // Wait for a short delay to ensure the file is fully loaded
+      setTimeout(function() {
+          // Initiate the print dialog for the iframe
+          iframe.contentWindow.print();
+      }, 1000); // Adjust the delay as needed
+
+      // Optional: Remove the iframe after printing is done
+      iframe.onload = function() {
+          setTimeout(function() {
+              document.body.removeChild(iframe);
+          }, 1000); // Adjust the delay as needed
+      };
 
       // Display the pdf with autoprint
     // doc.autoPrint({ variant: "non-conform" })
