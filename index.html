@@ -46,31 +46,18 @@
           2: { cellWidth: thirdColumnWidth, align: "right" } // Prevent text wrapping in the price column
         }
       })
-      doc.save("order.pdf")
-
-      // Display the saved PDF in a hidden iframe
-      var iframe = document.createElement('iframe');
-      iframe.style.display = 'none';
-      iframe.src = 'order.pdf';
-      document.body.appendChild(iframe);
-
-      // Wait for a short delay to ensure the file is fully loaded
-      setTimeout(function() {
-          // Initiate the print dialog for the iframe
-          iframe.contentWindow.print();
-      }, 1000); // Adjust the delay as needed
-
-      // Optional: Remove the iframe after printing is done
-      iframe.onload = function() {
-          setTimeout(function() {
-              document.body.removeChild(iframe);
-          }, 1000); // Adjust the delay as needed
-      };
+      //doc.save("order.pdf")
 
       // Display the pdf with autoprint
     // doc.autoPrint({ variant: "non-conform" })
     // window.open(doc.output("bloburl"), "_blank")
 
+      // Save the PDF
+      const pdfBlob = doc.output('blob');
+      const pdfUrl = URL.createObjectURL(pdfBlob);
+
+      // Open the PDF in a new tab
+      window.open(pdfUrl, '_blank');
 
     }
   </script>
